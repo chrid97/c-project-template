@@ -4,11 +4,7 @@ mkdir -p build/
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
   # macOS settings
-  eval cc ./src/main.c $(pkg-config --libs --cflags raylib) -o ./build/tradebinder
+  eval cc ./src/main.c -o ./build/project
 else
-  gcc ./src/main.c -g \
-    -I./lib/raylib/include \
-    -L./lib/raylib/lib -Wl,-rpath=\$ORIGIN/../lib/raylib/lib \
-    -lraylib -lGL -lm -lpthread -ldl -lrt -lX11 \
-    -o ./build/tradebinder
+  gcc ./src/main.c -g -o ./build/project
 fi
